@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+  solr:
+    container_name: 'ez-platform-solr-bundle_v3.0'
+    image: 'ez-platform-solr:7-alpine'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - "8983"
+    ports:
+      - "8983:8983"
