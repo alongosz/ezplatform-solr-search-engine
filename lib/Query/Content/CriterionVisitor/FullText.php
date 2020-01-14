@@ -113,7 +113,8 @@ class FullText extends CriterionVisitor
         $syntaxTree = $this->parser->parse($tokenSequence);
 
         $options = [];
-        if ($criterion->fuzziness < 1) {
+        // @see https://lucene.apache.org/solr/guide/7_7/the-standard-query-parser.html#fuzzy-searches
+        if ($criterion->fuzziness >= 0 && $criterion->fuzziness <= 2) {
             $options['fuzziness'] = $criterion->fuzziness;
         }
 
